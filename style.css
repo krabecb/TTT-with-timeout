@@ -1,0 +1,21 @@
+body {
+    background-image: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%);
+    height: 100%;
+    width: 100%;
+    /* background is fixed relative to the viewport. Does not move if element can scroll. */
+    background-attachment: fixed;
+}
+
+main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 200px;
+}
+
+.square {
+    background-color: whitesmoke;
+    height: 50px;
+    width: 50px;
+    margin: 5px;
+}
