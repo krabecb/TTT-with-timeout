@@ -38,14 +38,15 @@ function checkLoss() {
             }
             nemesisPoint += 1
             if (nemesisPoint === 3) {
+                document.querySelector('main').className = "dissapear"
                 let loseText = document.createElement('h2')
                 loseText.innerHTML = "You lost!"
                 document.querySelector('section').appendChild(loseText)
+                loseText.className = 'move'
                 return
             }
         }
     }
-    checkTie()
 }
 
 function checkWin() {
@@ -57,9 +58,11 @@ function checkWin() {
             }
             pass += 1
             if (pass === 3) {
+                document.querySelector('main').className = "dissapear"
                 let winText = document.createElement('h2')
                 winText.innerHTML = "You actually won? :)"
                 document.querySelector('section').appendChild(winText)
+                winText.className = "move"
                 return
             }
         }
@@ -149,6 +152,5 @@ function selectSquare(e) {
 allSquares.forEach( square => {
     square.addEventListener('click', (e) => {
         selectSquare(e)
-        squaresClicked += 1
     })
 })
