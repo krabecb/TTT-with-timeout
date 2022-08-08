@@ -13,6 +13,8 @@ const winConditions = [
 
 let turnTracker = 'X'
 let pass = 0
+let nemesisPoint = 0
+let squaresClicked = 0
 
 const allSquares = document.querySelectorAll('.square')
 
@@ -28,6 +30,24 @@ function createWin() {
     console.log("Winner!")
 }
 
+function checkTie() {
+    if (squaresClicked === 8) console.log("It's a TIE!!!")
+}
+
+function checkLoss() {
+    for (let i = 0; i < winConditions.length; i++) {
+        for (let j = 0; j < winConditions[i].length; j++) {
+            if (current[winConditions[i][j]] !== 'O') {
+                nemesisPoint = 0
+                break
+            }
+            nemesisPoint += 1
+            if (nemesisPoint === 3) return console.log("YOU! LOOOOOSE!")
+        }
+    }
+    checkTie()
+}
+
 function checkWin() {
     for (let i = 0; i < winConditions.length; i++) {
         for (let j = 0; j < winConditions[i].length; j++) {
@@ -36,9 +56,10 @@ function checkWin() {
                 break
             }
             pass += 1
-            if (pass === 3) console.log("WINNER!")
+            if (pass === 3) return console.log("WINNER!")
         }
     }
+    checkLoss()
 }
 
 function selectSquare(e) {
@@ -82,11 +103,11 @@ function selectSquare(e) {
     }
     updateTracker()
     checkWin()
-    // console.log(current)
 }
 
 allSquares.forEach( square => {
     square.addEventListener('click', (e) => {
         selectSquare(e)
+        squaresClicked += 1
     })
 })
